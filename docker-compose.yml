@@ -1,0 +1,17 @@
+services:
+  react-quiz-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      # Required for Vite to work properly in Docker
+      - VITE_HOST=0.0.0.0
+    # Keep the container running
+    stdin_open: true
+    tty: true
